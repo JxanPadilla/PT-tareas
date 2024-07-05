@@ -8,6 +8,7 @@ import correo from "../../../assets/img/Correo.svg"
 import '../../../index.css'
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import Swal from "sweetalert2"
 
 
 export const Login = () => {
@@ -27,12 +28,24 @@ export const Login = () => {
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
-        navigate('/home');
+        Swal.fire({
+            icon: 'warning',
+            title: 'alerta',
+            text: 'Debes registrarte',
+        });
     };
 
     const handleRegisterSubmit = (e) => {
         e.preventDefault();
-        navigate('/home');
+        if (registerData.password !== registerData.confirmPassword) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Las contraseñas deben coincidir',
+            });
+        } else {
+            navigate('/home');
+        }
     };
 
     return (

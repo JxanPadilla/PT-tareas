@@ -1,6 +1,13 @@
 import '../../../index.css'
+import { useEffect } from 'react';
 
 export const Inicio = () => {
+    useEffect(() => {
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
+    }, []);
     return(
         <>
             <div className='contTitulo'>
